@@ -8,7 +8,7 @@ Converts a list of hostnames or URLs to their corresponding IP address
 If you have Go installed and configured (i.e. with `$GOPATH/bin` in your `$PATH`):
 
 ```
-go get -u github.com/cybercdh/h2i
+go install github.com/cybercdh/h2i@latest
 ```
 
 ## Usage
