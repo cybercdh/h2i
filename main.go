@@ -53,7 +53,7 @@ func main() {
 					}
 				} else {
 					if verbose {
-						fmt.Printf("%s %s \n", host, addr[0].IP.String())
+						fmt.Printf("%s,%s \n", host, addr[0].IP.String())
 					} else {
 						fmt.Println(addr[0].IP.String())
 					}
