@@ -27,7 +27,13 @@ By default, the code will simply print the list of IP's to the console. For more
 
 ```
 Usage of h2i:
-  -c  <int> set the concurrency level (default 20)
+  -c int
+      set the concurrency level (default 20)
+  -dns string
+      Custom DNS server to use for resolution
+  -port string
+      DNS server port (default "53")
   -v  Show hostname with the corresponding IP
-  -vv Show any errors and relevant info
+  -vv
+      Show any errors and relevant info
 ```
