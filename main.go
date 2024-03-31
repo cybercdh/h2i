@@ -15,7 +15,7 @@ import (
 
 func main() {
 	var concurrency int
-	var verbose, v_verbose bool
+	var verbose, v_verbose, dnsTCP bool
 	var customDNS string
 	var dnsPort string
 
@@ -24,6 +24,7 @@ func main() {
 	flag.BoolVar(&v_verbose, "vv", false, "Show any errors and relevant info")
 	flag.StringVar(&customDNS, "dns", "", "Custom DNS server to use for resolution")
 	flag.StringVar(&dnsPort, "port", "53", "DNS server port")
+	flag.BoolVar(&dnsTCP, "dns-tcp", false, "Use DNS over TCP")
 	flag.Parse()
 
 	hosts := make(chan string)
@@ -35,8 +36,13 @@ func main() {
 		resolver = &net.Resolver{
 			PreferGo: true,
 			Dial: func(ctx context.Context, network, address string) (net.Conn, error) {
-				return net.Dial("udp", customDNS+":"+dnsPort)
-			},
+			// Choose network type based on dnsTCP flag
+			networkType := "udp"
+			if dnsTCP {
+				networkType = "tcp"
+			}
+			return net.Dial(networkType, customDNS+":"+dnsPort)
+		},
 		}
 	}
 
