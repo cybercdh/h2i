@@ -31,6 +31,8 @@ Usage of h2i:
       set the concurrency level (default 20)
   -dns string
       Custom DNS server to use for resolution
+  -dns-tcp
+      Use DNS over TCP instead of the default UDP. Useful for SOCKS proxy environments where UDP is not supported.
   -port string
       DNS server port (default "53")
   -v  Show hostname with the corresponding IP
