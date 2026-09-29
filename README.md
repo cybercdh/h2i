@@ -27,6 +27,7 @@ By default, the code will simply print the list of IP's to the console. For more
 
 ```
 Usage of h2i:
+  -a  Show every IP address a host resolves to, not just the first
   -c int
       set the concurrency level (default 20)
   -dns string
@@ -37,5 +38,7 @@ Usage of h2i:
       DNS server port (default "53")
   -v  Show hostname with the corresponding IP
   -vv
-      Show any errors and relevant info
+      Show any errors and relevant info (on stderr)
 ```
+
+Input lines may be bare hostnames, `host:port` pairs, or full URLs. Diagnostics from `-vv` go to stderr, so stdout stays a clean list when piped.
